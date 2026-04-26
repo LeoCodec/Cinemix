@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
                     .scaleY(1f)
                     .setDuration(400)
                     .withEndAction {
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, LoginActivity::class.java))
                         finish()
                     }.start()
             }.start()
