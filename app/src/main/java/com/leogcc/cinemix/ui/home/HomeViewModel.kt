@@ -1,6 +1,5 @@
 package com.leogcc.cinemix.ui.home
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,9 +16,29 @@ class HomeViewModel : ViewModel() {
     private val _mensaje = MutableLiveData<String>()
     val mensaje: LiveData<String> = _mensaje
 
+    private val _estadisticas = MutableLiveData<Map<String, Int>>()
+    val estadisticas: LiveData<Map<String, Int>> = _estadisticas
+
     fun cargar(tipo: String?) {
         viewModelScope.launch {
             _items.value = if (tipo == null) repo.getAll() else repo.getByTipo(tipo)
+        }
+    }
+
+    fun cargarFavoritos() {
+        viewModelScope.launch {
+            _items.value = repo.getFavoritos()
+        }
+    }
+
+    fun cargarEstadisticas() {
+        viewModelScope.launch {
+            val todos = repo.getAll()
+            val map = mutableMapOf<String, Int>()
+            map["pelicula"] = todos.count { it.tipo == "pelicula" }
+            map["serie"]    = todos.count { it.tipo == "serie" }
+            map["libro"]    = todos.count { it.tipo == "libro" }
+            _estadisticas.value = map
         }
     }
 

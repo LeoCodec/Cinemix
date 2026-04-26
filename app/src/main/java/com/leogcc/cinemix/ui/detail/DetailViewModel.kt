@@ -15,6 +15,9 @@ class DetailViewModel : ViewModel() {
     val item: LiveData<Item> = _item
     private var itemActual: Item? = null
 
+    private val _eliminado = MutableLiveData<Boolean>()
+    val eliminado: LiveData<Boolean> = _eliminado
+
     fun cargar(id: String) {
         viewModelScope.launch {
             val lista = repo.getAll()
@@ -29,6 +32,15 @@ class DetailViewModel : ViewModel() {
                 val actualizado = it.copy(esFavorito = esFavorito)
                 repo.guardar(actualizado)
                 itemActual = actualizado
+            }
+        }
+    }
+
+    fun eliminar() {
+        viewModelScope.launch {
+            itemActual?.let {
+                repo.eliminar(it.id)
+                _eliminado.value = true
             }
         }
     }

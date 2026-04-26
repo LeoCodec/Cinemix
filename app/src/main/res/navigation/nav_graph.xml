@@ -12,6 +12,14 @@
             app:destination="@id/detailFragment"/>
     </fragment>
     <fragment
+        android:id="@+id/favoritosFragment"
+        android:name="com.leogcc.cinemix.ui.home.FavoritosFragment"
+        android:label="Favoritos"/>
+    <fragment
+        android:id="@+id/estadisticasFragment"
+        android:name="com.leogcc.cinemix.ui.home.EstadisticasFragment"
+        android:label="Estadisticas"/>
+    <fragment
         android:id="@+id/addFragment"
         android:name="com.leogcc.cinemix.ui.add.AddFragment"
         android:label="Agregar"/>

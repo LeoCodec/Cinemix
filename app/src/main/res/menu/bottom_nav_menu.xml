@@ -5,6 +5,14 @@
         android:title="Inicio"
         android:icon="@drawable/ic_home"/>
     <item
+        android:id="@+id/favoritosFragment"
+        android:title="Favoritos"
+        android:icon="@drawable/ic_favorite"/>
+    <item
+        android:id="@+id/estadisticasFragment"
+        android:title="Stats"
+        android:icon="@drawable/ic_stats"/>
+    <item
         android:id="@+id/addFragment"
         android:title="Agregar"
         android:icon="@drawable/ic_add"/>

@@ -1,11 +1,14 @@
-﻿package com.leogcc.cinemix.ui.detail
+package com.leogcc.cinemix.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.leogcc.cinemix.databinding.FragmentDetailBinding
 
@@ -27,12 +30,12 @@ class DetailFragment : Fragment() {
         viewModel.cargar(itemId)
 
         viewModel.item.observe(viewLifecycleOwner) { item ->
-            binding.tvTitulo.text    = item.titulo
-            binding.tvMeta.text      = "${item.anio} · ${item.genero}"
-            binding.tvDirector.text  = if (item.tipo == "libro") "Autor: ${item.autor}" else "Director: ${item.director}"
-            binding.tvSinopsis.text  = item.sinopsis
+            binding.tvTitulo.text   = item.titulo
+            binding.tvMeta.text     = " - "
+            binding.tvDirector.text = if (item.tipo == "libro") "Autor: " else "Director: "
+            binding.tvSinopsis.text = item.sinopsis
             binding.ratingBar.rating = item.calificacion
-            binding.tvVeces.text     = "Visto ${item.vecesVisto} veces"
+            binding.tvVeces.text    = "Visto  veces"
             binding.btnFavorito.isChecked = item.esFavorito
             if (item.portadaUrl.isNotEmpty()) {
                 Glide.with(this).load(item.portadaUrl).into(binding.imgPortada)
@@ -41,6 +44,26 @@ class DetailFragment : Fragment() {
 
         binding.btnFavorito.setOnCheckedChangeListener { _, checked ->
             viewModel.toggleFavorito(checked)
+        }
+
+        binding.btnEliminar.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Eliminar")
+                .setMessage("Seguro que quieres eliminar esto?")
+                .setPositiveButton("Si") { _, _ -> viewModel.eliminar() }
+                .setNegativeButton("No", null)
+                .show()
+        }
+
+        binding.btnEditar.setOnClickListener {
+            Toast.makeText(requireContext(), "Editar proximamente", Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.eliminado.observe(viewLifecycleOwner) { ok ->
+            if (ok) {
+                Toast.makeText(requireContext(), "Eliminado!", Toast.LENGTH_SHORT).show()
+                findNavController().navigateUp()
+            }
         }
     }
 
