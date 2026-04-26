@@ -1,4 +1,4 @@
-package com.leogcc.cinemix.ui.add
+﻿package com.leogcc.cinemix.ui.add
 
 import android.net.Uri
 import android.os.Bundle
@@ -42,7 +42,7 @@ class AddFragment : Fragment() {
         binding.btnGuardar.setOnClickListener {
             val titulo = binding.etTitulo.text.toString().trim()
             if (titulo.isEmpty()) {
-                binding.etTitulo.error = "El título es obligatorio"
+                binding.etTitulo.error = "El titulo es obligatorio"
                 return@setOnClickListener
             }
 
@@ -70,7 +70,7 @@ class AddFragment : Fragment() {
 
         viewModel.guardado.observe(viewLifecycleOwner) { ok ->
             if (ok) {
-                Toast.makeText(requireContext(), "Guardado ✓", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Guardado!", Toast.LENGTH_SHORT).show()
                 findNavController().navigateUp()
             }
         }
