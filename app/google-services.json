@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "470776722372",
-    "project_id": "cinemix-8885e",
-    "storage_bucket": "cinemix-8885e.firebasestorage.app"
+    "project_number": "330828954865",
+    "project_id": "cinemix-2002",
+    "storage_bucket": "cinemix-2002.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:470776722372:android:1b6edd65bd98ffea492a91",
+        "mobilesdk_app_id": "1:330828954865:android:2fb3201493227c14f1fd50",
         "android_client_info": {
           "package_name": "com.leogcc.cinemix"
         }
@@ -15,7 +15,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDK_l8vGO8FCATzEtw3C8lXVJ5LVMeLziU"
+          "current_key": "AIzaSyBJZhVZ1WqY5iZi81NguhPXBMM2-gvDtuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330828954865:android:6118af8343a162a0f1fd50",
+        "android_client_info": {
+          "package_name": "leocruz.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJZhVZ1WqY5iZi81NguhPXBMM2-gvDtuU"
         }
       ],
       "services": {
