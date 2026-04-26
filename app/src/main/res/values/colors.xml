@@ -3,8 +3,8 @@
     <color name="colorPrimary">#FF204E</color>
     <color name="colorPrimaryDark">#A0153E</color>
     <color name="colorAccent">#5D0E41</color>
-    <color name="colorBackground">#00224D</color>
-    <color name="colorSurface">#0A1628</color>
+    <color name="colorBackground">#000000</color>
+    <color name="colorSurface">#111111</color>
     <color name="colorOnPrimary">#FFFFFF</color>
     <color name="colorOnBackground">#FFFFFF</color>
 </resources>

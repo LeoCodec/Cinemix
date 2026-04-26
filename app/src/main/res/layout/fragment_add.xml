@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -9,43 +10,37 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Selector tipo -->
         <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/toggleTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp">
-
             <Button android:id="@+id/btnPelicula"
                 style="@style/Widget.Material3.Button.OutlinedButton"
-                android:text="🎬 Película"
+                android:text="Pelicula"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="40dp"/>
-
             <Button android:id="@+id/btnSerie"
                 style="@style/Widget.Material3.Button.OutlinedButton"
-                android:text="📺 Serie"
+                android:text="Serie"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="40dp"/>
-
             <Button android:id="@+id/btnLibro"
                 style="@style/Widget.Material3.Button.OutlinedButton"
-                android:text="📚 Libro"
+                android:text="Libro"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="40dp"/>
-
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
-        <!-- Portada -->
         <ImageView
             android:id="@+id/imgPortada"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
-            android:background="#1a1a22"
+            android:background="#0A1628"
             android:layout_marginBottom="8dp"/>
 
         <Button
@@ -55,11 +50,11 @@
             android:text="Subir portada (PNG / JPG)"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Título -->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Título"
+            android:hint="Titulo"
             android:layout_marginBottom="8dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTitulo"
@@ -67,11 +62,11 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Director -->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Director (películas / series)"
+            android:hint="Director (peliculas / series)"
             android:layout_marginBottom="8dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDirector"
@@ -79,8 +74,8 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Autor -->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Autor (libros)"
@@ -91,11 +86,11 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Año -->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Año"
+            android:hint="Anio"
             android:layout_marginBottom="8dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etAnio"
@@ -104,11 +99,11 @@
                 android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Género -->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Género"
+            android:hint="Genero"
             android:layout_marginBottom="8dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etGenero"
@@ -116,8 +111,8 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Veces visto -->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Veces visto"
@@ -129,8 +124,8 @@
                 android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Sinopsis -->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Sinopsis"
@@ -142,11 +137,11 @@
                 android:minLines="3"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Rating -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tu calificación:"
+            android:text="Tu calificacion:"
+            android:textColor="@color/colorOnBackground"
             android:layout_marginBottom="4dp"/>
 
         <RatingBar
@@ -157,19 +152,18 @@
             android:stepSize="0.5"
             android:layout_marginBottom="12dp"/>
 
-        <!-- Favorito -->
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchFavorito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="¿Es tu favorita?"
+            android:text="Es tu favorita?"
             android:layout_marginBottom="16dp"/>
 
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar en mi colección"/>
+            android:text="Guardar en mi coleccion"/>
 
     </LinearLayout>
 </ScrollView>
