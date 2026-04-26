@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -52,10 +53,30 @@ class HomeFragment : Fragment() {
 
         viewModel.cargar(null)
 
-        binding.btnTodos.setOnClickListener { viewModel.cargar(null) }
-        binding.btnPeliculas.setOnClickListener { viewModel.cargar("pelicula") }
-        binding.btnSeries.setOnClickListener { viewModel.cargar("serie") }
-        binding.btnLibros.setOnClickListener { viewModel.cargar("libro") }
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?) = false
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.buscar(newText ?: "")
+                return true
+            }
+        })
+
+        binding.btnTodos.setOnClickListener {
+            binding.searchView.setQuery("", false)
+            viewModel.cargar(null)
+        }
+        binding.btnPeliculas.setOnClickListener {
+            binding.searchView.setQuery("", false)
+            viewModel.cargar("pelicula")
+        }
+        binding.btnSeries.setOnClickListener {
+            binding.searchView.setQuery("", false)
+            viewModel.cargar("serie")
+        }
+        binding.btnLibros.setOnClickListener {
+            binding.searchView.setQuery("", false)
+            viewModel.cargar("libro")
+        }
     }
 
     override fun onDestroyView() {

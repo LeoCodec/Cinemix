@@ -25,6 +25,19 @@ class HomeViewModel : ViewModel() {
         }
     }
 
+    fun buscar(query: String) {
+        viewModelScope.launch {
+            if (query.isEmpty()) {
+                _items.value = repo.getAll()
+            } else {
+                val todos = repo.getAll()
+                _items.value = todos.filter {
+                    it.titulo.contains(query, ignoreCase = true)
+                }
+            }
+        }
+    }
+
     fun cargarFavoritos() {
         viewModelScope.launch {
             _items.value = repo.getFavoritos()
