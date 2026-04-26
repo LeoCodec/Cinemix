@@ -3,14 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background">
-
+    android:background="@color/colorBackground">
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/tabGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp">
-
         <Button
             android:id="@+id/btnTodos"
             style="@style/Widget.Material3.Button.OutlinedButton"
@@ -18,38 +16,32 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="36dp"/>
-
         <Button
             android:id="@+id/btnPeliculas"
             style="@style/Widget.Material3.Button.OutlinedButton"
-            android:text="🎬"
+            android:text="Peliculas"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="36dp"/>
-
         <Button
             android:id="@+id/btnSeries"
             style="@style/Widget.Material3.Button.OutlinedButton"
-            android:text="📺"
+            android:text="Series"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="36dp"/>
-
         <Button
             android:id="@+id/btnLibros"
             style="@style/Widget.Material3.Button.OutlinedButton"
-            android:text="📚"
+            android:text="Libros"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="36dp"/>
-
     </com.google.android.material.button.MaterialButtonToggleGroup>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
         android:clipToPadding="false"/>
-
 </LinearLayout>
