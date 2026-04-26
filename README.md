@@ -31,10 +31,6 @@ Aplicación Android para gestionar tu colección personal de películas, series 
 <img width="409" height="875" alt="image" src="https://github.com/user-attachments/assets/83d70f71-2eca-4b89-ad1f-016496cdfdc3" />
 <img width="405" height="878" alt="image" src="https://github.com/user-attachments/assets/d2aba7d5-c19c-4533-9b8e-97d59b75707c" />
 
-
-
-
-
 ## 🚀 Instalación
 
 1. Clona el repositorio
