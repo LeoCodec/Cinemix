@@ -12,13 +12,13 @@ class ItemAdapter(private val onClick: (Item) -> Unit) :
     inner class ViewHolder(private val b: ItemCardBinding) : RecyclerView.ViewHolder(b.root) {
         fun bind(item: Item) {
             b.tvTitulo.text = item.titulo
-            b.tvMeta.text   = "{item.anio} · {item.genero}"
+            b.tvMeta.text   = item.anio.toString() + " - " + item.genero
             b.tvTipo.text   = when (item.tipo) {
                 "pelicula" -> "Pelicula"
                 "serie"    -> "Serie"
                 else       -> "Libro"
             }
-            b.tvRating.text = "{"%.1f".format(item.calificacion)}"
+            b.tvRating.text = item.calificacion.toString()
             if (item.portadaUrl.isNotEmpty()) {
                 Glide.with(b.root).load(item.portadaUrl).into(b.imgPortada)
             }
