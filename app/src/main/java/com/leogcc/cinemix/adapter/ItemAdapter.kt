@@ -27,7 +27,7 @@ class ItemAdapter(
                 else -> "Libro"
             }
             b.tvRating.text = item.calificacion.toString()
-            b.tvVeces.text = if (item.vecesVisto > 0) "Visto  veces" else ""
+            b.tvVeces.text = if (item.vecesVisto > 0) "Visto " + item.vecesVisto + " veces" else ""
             if (item.portadaUrl.isNotEmpty()) {
                 Glide.with(b.root).load(item.portadaUrl).into(b.imgPortada)
             }

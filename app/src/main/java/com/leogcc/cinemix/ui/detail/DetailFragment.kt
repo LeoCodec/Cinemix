@@ -30,12 +30,12 @@ class DetailFragment : Fragment() {
         viewModel.cargar(itemId)
 
         viewModel.item.observe(viewLifecycleOwner) { item ->
-            binding.tvTitulo.text   = item.titulo
-            binding.tvMeta.text     = " - "
-            binding.tvDirector.text = if (item.tipo == "libro") "Autor: " else "Director: "
-            binding.tvSinopsis.text = item.sinopsis
+            binding.tvTitulo.text    = item.titulo
+            binding.tvMeta.text      = item.anio.toString() + " - " + item.genero
+            binding.tvDirector.text  = if (item.tipo == "libro") "Autor: " + item.autor else "Director: " + item.director
+            binding.tvSinopsis.text  = item.sinopsis
             binding.ratingBar.rating = item.calificacion
-            binding.tvVeces.text    = "Visto  veces"
+            binding.tvVeces.text     = "Visto " + item.vecesVisto + " veces"
             binding.btnFavorito.isChecked = item.esFavorito
             if (item.portadaUrl.isNotEmpty()) {
                 Glide.with(this).load(item.portadaUrl).into(binding.imgPortada)

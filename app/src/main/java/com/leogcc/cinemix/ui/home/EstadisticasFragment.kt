@@ -29,11 +29,11 @@ class EstadisticasFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
 
         viewModel.estadisticas.observe(viewLifecycleOwner) { stats ->
-            binding.tvPeliculas.text = "Peliculas: "
-            binding.tvSeries.text    = "Series: "
-            binding.tvLibros.text    = "Libros: "
+            binding.tvPeliculas.text = "Peliculas: " + (stats["pelicula"] ?: 0)
+            binding.tvSeries.text    = "Series: " + (stats["serie"] ?: 0)
+            binding.tvLibros.text    = "Libros: " + (stats["libro"] ?: 0)
             val total = (stats["pelicula"] ?: 0) + (stats["serie"] ?: 0) + (stats["libro"] ?: 0)
-            binding.tvTotal.text = "Total: "
+            binding.tvTotal.text = "Total: " + total
         }
 
         viewModel.cargarEstadisticas()

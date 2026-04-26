@@ -28,7 +28,7 @@ class HomeViewModel : ViewModel() {
                 todosLosItems = todos
                 _items.value = if (tipo == null) todos else todos.filter { it.tipo == tipo }
             } catch (e: Exception) {
-                _mensaje.value = "Error cargar: "
+                _mensaje.value = "Error: " + e.message
             }
         }
     }
@@ -50,7 +50,7 @@ class HomeViewModel : ViewModel() {
             try {
                 _items.value = repo.getFavoritos()
             } catch (e: Exception) {
-                _mensaje.value = "Error favoritos: "
+                _mensaje.value = "Error favoritos: " + e.message
             }
         }
     }
@@ -64,9 +64,9 @@ class HomeViewModel : ViewModel() {
                 map["serie"]    = todos.count { it.tipo == "serie" }
                 map["libro"]    = todos.count { it.tipo == "libro" }
                 _estadisticas.value = map
-                _mensaje.value = "Stats:  items"
+                _mensaje.value = "Stats: " + todos.size + " items"
             } catch (e: Exception) {
-                _mensaje.value = "Error stats: "
+                _mensaje.value = "Error stats: " + e.message
             }
         }
     }
@@ -75,7 +75,7 @@ class HomeViewModel : ViewModel() {
         viewModelScope.launch {
             val actualizado = item.copy(vecesVisto = item.vecesVisto + 1)
             repo.guardar(actualizado)
-            _mensaje.value = "Visto  veces"
+            _mensaje.value = "Visto " + actualizado.vecesVisto + " veces"
             cargar(null)
         }
     }
