@@ -21,6 +21,12 @@ class ItemRepository {
             .toObjects(Item::class.java)
     }
 
+    suspend fun getAllSimple(): List<Item> {
+        return col.whereEqualTo("userId", userId)
+            .get().await()
+            .toObjects(Item::class.java)
+    }
+
     suspend fun getByTipo(tipo: String): List<Item> {
         return col.whereEqualTo("userId", userId)
             .whereEqualTo("tipo", tipo)
@@ -44,14 +50,5 @@ class ItemRepository {
 
     suspend fun eliminar(id: String) {
         col.document(id).delete().await()
-    }
-
-    suspend fun buscar(query: String): List<Item> {
-        return col.whereEqualTo("userId", userId)
-            .orderBy("titulo")
-            .startAt(query)
-            .endAt(query + "\uf8ff")
-            .get().await()
-            .toObjects(Item::class.java)
     }
 }

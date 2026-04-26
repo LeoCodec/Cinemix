@@ -19,19 +19,26 @@ class HomeViewModel : ViewModel() {
     private val _estadisticas = MutableLiveData<Map<String, Int>>()
     val estadisticas: LiveData<Map<String, Int>> = _estadisticas
 
+    private var todosLosItems: List<Item> = emptyList()
+
     fun cargar(tipo: String?) {
         viewModelScope.launch {
-            _items.value = if (tipo == null) repo.getAll() else repo.getByTipo(tipo)
+            try {
+                val todos = repo.getAll()
+                todosLosItems = todos
+                _items.value = if (tipo == null) todos else todos.filter { it.tipo == tipo }
+            } catch (e: Exception) {
+                _mensaje.value = "Error cargar: "
+            }
         }
     }
 
     fun buscar(query: String) {
         viewModelScope.launch {
             if (query.isEmpty()) {
-                _items.value = repo.getAll()
+                _items.value = todosLosItems
             } else {
-                val todos = repo.getAll()
-                _items.value = todos.filter {
+                _items.value = todosLosItems.filter {
                     it.titulo.contains(query, ignoreCase = true)
                 }
             }
@@ -40,18 +47,27 @@ class HomeViewModel : ViewModel() {
 
     fun cargarFavoritos() {
         viewModelScope.launch {
-            _items.value = repo.getFavoritos()
+            try {
+                _items.value = repo.getFavoritos()
+            } catch (e: Exception) {
+                _mensaje.value = "Error favoritos: "
+            }
         }
     }
 
     fun cargarEstadisticas() {
         viewModelScope.launch {
-            val todos = repo.getAll()
-            val map = mutableMapOf<String, Int>()
-            map["pelicula"] = todos.count { it.tipo == "pelicula" }
-            map["serie"]    = todos.count { it.tipo == "serie" }
-            map["libro"]    = todos.count { it.tipo == "libro" }
-            _estadisticas.value = map
+            try {
+                val todos = repo.getAllSimple()
+                val map = mutableMapOf<String, Int>()
+                map["pelicula"] = todos.count { it.tipo == "pelicula" }
+                map["serie"]    = todos.count { it.tipo == "serie" }
+                map["libro"]    = todos.count { it.tipo == "libro" }
+                _estadisticas.value = map
+                _mensaje.value = "Stats:  items"
+            } catch (e: Exception) {
+                _mensaje.value = "Error stats: "
+            }
         }
     }
 

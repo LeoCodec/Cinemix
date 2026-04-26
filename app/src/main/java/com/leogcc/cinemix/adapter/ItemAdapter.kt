@@ -17,7 +17,6 @@ class ItemAdapter(
 
     inner class ViewHolder(private val b: ItemCardBinding) : RecyclerView.ViewHolder(b.root) {
         private var lastClickTime = 0L
-        private var clickCount = 0
 
         fun bind(item: Item) {
             b.tvTitulo.text = item.titulo
@@ -28,6 +27,7 @@ class ItemAdapter(
                 else -> "Libro"
             }
             b.tvRating.text = item.calificacion.toString()
+            b.tvVeces.text = if (item.vecesVisto > 0) "Visto  veces" else ""
             if (item.portadaUrl.isNotEmpty()) {
                 Glide.with(b.root).load(item.portadaUrl).into(b.imgPortada)
             }
